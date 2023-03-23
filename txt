@@ -1,0 +1,31 @@
+Estado inicial: LEER_CARACTER
+
+LEER_CARACTER:
+- Leer el siguiente caracter de entrada.
+- Si el caracter es un espacio, ir al estado LEER_CARACTER.
+- Si el caracter es "f", ir al estado LEER_FOR.
+- Si el caracter es cualquier otro caracter, detener la ejecución.
+
+LEER_FOR:
+- Leer el siguiente caracter de entrada.
+- Si el caracter es un espacio, ir al estado LEER_FOR.
+- Si el caracter es "o", ir al estado LEER_FOR_O.
+- Si el caracter es cualquier otro caracter, detener la ejecución.
+
+LEER_FOR_O:
+- Leer el siguiente caracter de entrada.
+- Si el caracter es un espacio, ir al estado LEER_FOR_O.
+- Si el caracter es "r", ir al estado LEER_FOR_R.
+- Si el caracter es cualquier otro caracter, detener la ejecución.
+
+LEER_FOR_R:
+- Leer el siguiente caracter de entrada.
+- Si el caracter es un espacio, ir al estado LEER_FOR_R.
+- Si el caracter es "(", ir al estado LEER_CONDICION.
+- Si el caracter es cualquier otro caracter, detener la ejecución.
+
+LEER_CONDICION:
+- Leer el siguiente caracter de entrada.
+- Si el caracter es un espacio, ir al estado LEER_CONDICION.
+- Si el caracter es un carácter alfanumérico o "=", agregarlo a la variable condición y seguir en el estado LEER_CONDICION.
+-
