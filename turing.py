@@ -64,21 +64,25 @@ def identificar_D_I_cabezal(e): #pasar el numero de trancision
 # se rellena la cinta2
 def rellenar_cinta2():
     expresion_for = input("Hola por favor ingresa la expresión for para transformarla a while \n Ejemplo: for(i=1;i<=10;i++) \n")
+    cinta2 = []
     for caracter in expresion_for:
-        cinta2.append(caracter)
+        if caracter != ' ':  # Si el caracter no es un espacio
+            cinta2.append(caracter)
     cinta2.append("B")
+    
+    # Eliminar espacios de la lista cinta2
+    while ' ' in cinta2:
+        cinta2.remove(' ')
    
-
     print(cinta2)
+
    
 # se genera la lógica de la máquina de Turing para
 # el error está en que lo pongo en la posición 0 por lo que pone primero { B después a { B
 
         
 def rellenar_cinta3():
-        numero_transiciones = len(trancision) +1
-        for e in range(numero_transiciones):
-              identificar_D_I_cabezal(e)
+       print(cinta2)
     
 def main():
     rellenar_cinta2()
