@@ -66,16 +66,17 @@ def rellenar_cinta2():
     expresion_for = input("Hola por favor ingresa la expresión for para transformarla a while \n Ejemplo: for(i=1;i<=10;i++) \n")
     cinta2 = []
     for caracter in expresion_for:
-        if caracter != ' ':  # Si el caracter no es un espacio
-            cinta2.append(caracter)
+        cinta2.append(caracter)
     cinta2.append("B")
-    
-    # Eliminar espacios de la lista cinta2
-    while ' ' in cinta2:
-        cinta2.remove(' ')
    
-    print(cinta2)
+    nueva_cinta2 = []
+    for caracter in cinta2:
+        if caracter != " ":
+            nueva_cinta2.append(caracter)
+    cinta2 = nueva_cinta2
 
+    print(cinta2)
+    
    
 # se genera la lógica de la máquina de Turing para
 # el error está en que lo pongo en la posición 0 por lo que pone primero { B después a { B
