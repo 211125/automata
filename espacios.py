@@ -1,13 +1,16 @@
+import tkinter as tk
 k = [0, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '<', '>', '=', '+', '-']
 
-
+root = tk.Tk()
+root.title("Turing Machine")
+root.geometry("400x400")
 
 trancision = [
     [['q0','f','q1'],['q0','f','q1','D','D','S']],
     [['q1','o','q2'],['B','(','(','D','D']],
     [['q2','r','q3'],['D',';','B','D','S']],
     [['q3','(','q4'],['E','B',';','S','S']],
-    [['q4','{k}','q5'],['F','while',')','D','D']],
+    [['q4','k','q5'],['F','while',')','D','D']],
     [['q5',')','q6'],['B','{','B','D','S']],
     [['q6','{','q7'],['B','{','B','D','S']],
     [['q7','}','q8'],['B','{','B','D','S']],
@@ -109,8 +112,8 @@ def extraer_datos(arreglo):
     return datos_for, datos_otro
 
 def rellenar_cinta2():
-    expresion_for = input("Hola por favor ingresa la expresión for para transformarla a while \n Ejemplo: for(i=1;i<=10;i++) \n")
-    for caracter in expresion_for:
+    expresion_for1 = expresion_for.get()
+    for caracter in expresion_for1:
         cinta1.append(caracter)
    # cinta1.append("B")
     print(cinta1)
@@ -122,12 +125,47 @@ def rellenar_cinta2():
     print(datos_for)
     print()
     while_loop = "" + datos_for[0][0] + ";\n" "while (" + datos_for[0][1] + ") {""\n" + datos_for[0][3] + "" "\n" +datos_for[0][2]+ "\n}"
-    print(while_loop)
-    
-
+   # print(while_loop)
+    result_label.config(text=while_loop)
+    result_label.pack()
+    separador_label.config(text="--------------------------------")
+    separador_label.pack()
+    do_while_ = "" + datos_for[0][0] + ";\n" "if (" + datos_for[0][1] + ") {""\n" "do{ ""\n" + datos_for[0][3] + "" "\n" +datos_for[0][2]+ "\n }while(" + datos_for[0][1] + ");}"
+   # print(while_loop)
+    do_while.config(text=do_while_)
+    do_while.pack()
    
 def main():
-    
-    rellenar_cinta2()
+  
    
-main()
+    print(cinta1)
+    print()
+    cinta = turing_machine(cinta1)
+    print(cinta)
+    print(validar_arreglo(cinta))
+    datos_for = extraer_datos(cinta)
+    print(datos_for) 
+    print()
+    
+   # while_loop = "" + datos_for[0][0] + ";\n" "while (" + datos_for[0][1] + ") {""\n" + datos_for[0][3] + "" "\n" +datos_for[0][2]+ "\n}"
+    #print(while_loop)
+    #result_label.config(text=while_loop)
+    #result_label.pack()
+    
+    
+root.title("Transformador de for a while")
+label = tk.Label(root, text="Por favor ingresa la expresión for ")
+label.pack()
+expresion_for = tk.Entry(root)
+expresion_for.pack()
+
+convert_button = tk.Button(root, text="Convertir", command=rellenar_cinta2)
+convert_button.pack()
+
+result_label = tk.Label(root, text="")
+result_label.pack()
+separador_label = tk.Label(root, text="")
+separador_label.pack()
+do_while = tk.Label(root, text="")
+do_while.pack()
+root.mainloop()

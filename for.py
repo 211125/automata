@@ -18,7 +18,7 @@ def convert_for_to_while():
 
     # Mostrar el bucle while resultante en la ventana
     result_label.config(text=while_loop)
-
+    result_label.pack()
 # Crear la ventana principal
 root = tk.Tk()
 root.title("Convertir for a while")
@@ -38,4 +38,6 @@ result_label = tk.Label(root, text="")
 result_label.pack()
 
 # Ejecutar la ventana
+result_label = tk.Label(root, text="")
+result_label.pack()
 root.mainloop()
