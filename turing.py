@@ -64,18 +64,11 @@ def identificar_D_I_cabezal(e): #pasar el numero de trancision
 # se rellena la cinta2
 def rellenar_cinta2():
     expresion_for = input("Hola por favor ingresa la expresión for para transformarla a while \n Ejemplo: for(i=1;i<=10;i++) \n")
-    cinta2 = []
     for caracter in expresion_for:
         cinta2.append(caracter)
     cinta2.append("B")
    
-    nueva_cinta2 = []
-    for caracter in cinta2:
-        if caracter != " ":
-            nueva_cinta2.append(caracter)
-    cinta2 = nueva_cinta2
 
-    print(cinta2)
     
    
 # se genera la lógica de la máquina de Turing para
