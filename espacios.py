@@ -1,17 +1,44 @@
+k = [0, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '<', '>', '=', '+', '-']
+
+
+
+trancision = [
+    [['q0','f','q1'],['q0','f','q1','D','D','S']],
+    [['q1','o','q2'],['B','(','(','D','D']],
+    [['q2','r','q3'],['D',';','B','D','S']],
+    [['q3','(','q4'],['E','B',';','S','S']],
+    [['q4','{k}','q5'],['F','while',')','D','D']],
+    [['q5',')','q6'],['B','{','B','D','S']],
+    [['q6','{','q7'],['B','{','B','D','S']],
+    [['q7','}','q8'],['B','{','B','D','S']],
+    [['q8',' ','q9'],['B','{','B','D','S']],
+    [['q9',';','q10'],['B','{','B','D','S']],
+    [['q4','1','q4'],['C','2','2','D','D']],
+    [['q4','2','q4'],['C','3','3','D','D']],
+    [['q4','3','q4'],['C','4','4','D','D']],
+    [['q4','4','q4'],['C','5','5','D','D']],
+    [['q4','5','q4'],['C','6','6','D','D']],
+    [['q4','6','q4'],['C','7','7','D','D']],
+    [['q4','7','q4'],['C','8','8','D','D']],
+    [['q4','8','q4'],['C','9','9','D','D']],
+
+]
+
+
 def turing_machine(arr):
     state = 0
     current = 0
 
     while True:
         symbol = arr[current]
-
+        
         if state == 0:
-            if symbol == ' ':
+            if symbol == trancision[8][0][1]:
                 state = 1
             else:
                 current += 1
         elif state == 1:
-            if symbol == ' ':
+            if symbol == trancision[8][0][1]:
                 arr.pop(current)
             else:
                 state = 0
@@ -25,26 +52,27 @@ cinta1 = []
 #a = turing_machine(a)
 #print(a)
 def validar_arreglo(arreglo):
+    print(trancision[7][0][1])
     if len(arreglo) < 7:
         return False
-    if arreglo[0] != 'f' or arreglo[1] != 'o' or arreglo[2] != 'r' or arreglo[3] != '(':
+    if arreglo[0] != trancision[0][0][1] or arreglo[1] != trancision[1][0][1] or arreglo[2] != trancision[2][0][1] or arreglo[3] != trancision[3][0][1]:
         return False
     i = 4
-    while arreglo[i] != ';':
+    while arreglo[i] != trancision[9][0][1]:
         if i >= len(arreglo) - 1:
             return False
         i += 1
     i += 1
-    while arreglo[i] != ';':
+    while arreglo[i] != trancision[9][0][1]:
         if i >= len(arreglo) - 1:
             return False
         i += 1
     i += 1
-    while arreglo[i] != ')':
+    while arreglo[i] != trancision[5][0][1]:
         if i >= len(arreglo) - 1:
             return False
         i += 1
-    if arreglo[i+1] != '{' or arreglo[-1] != '}':
+    if arreglo[i+1] != trancision[6][0][1] or arreglo[-1] != trancision[7][0][1]:
         return False
     return True
 def extraer_datos(arreglo):
@@ -52,11 +80,11 @@ def extraer_datos(arreglo):
     datos_otro = []
     i = 0
     while i < len(arreglo):
-        if arreglo[i] == 'f' and arreglo[i+1] == 'o' and arreglo[i+2] == 'r' and arreglo[i+3] == '(':
+        if arreglo[i] == trancision[0][0][1] and arreglo[i+1] == trancision[1][0][1] and arreglo[i+2] == trancision[2][0][1] and arreglo[i+3] == trancision[3][0][1]:
             i += 4
             datos_temp = []
-            while arreglo[i] != ')':
-                if arreglo[i] == ';' or arreglo[i] == '{':
+            while arreglo[i] != trancision[5][0][1]:
+                if arreglo[i] == trancision[9][0][1] or arreglo[i] ==  trancision[6][0][1]:
                     datos_for.append(''.join(datos_temp))
                     datos_temp = []
                 else:
@@ -64,16 +92,16 @@ def extraer_datos(arreglo):
                 i += 1
             if datos_temp:
                 datos_for.append(''.join(datos_temp))
-            if '{' in arreglo[i:]:
-                inicio = arreglo.index('{', i) + 1
-                fin = arreglo.index('}', inicio)
+            if trancision[6][0][1] in arreglo[i:]:
+                inicio = arreglo.index(trancision[6][0][1], i) + 1
+                fin = arreglo.index(trancision[7][0][1], inicio)
                 datos_for.append(''.join(arreglo[inicio:fin]))
                 i = fin + 1
             else:
                 i += 1
         else:
             datos_temp = []
-            while i < len(arreglo) and arreglo[i] != ';':
+            while i < len(arreglo) and arreglo[i] != trancision[9][0][1]:
                 datos_temp.append(arreglo[i])
                 i += 1
             datos_otro.append(''.join(datos_temp))
@@ -90,13 +118,16 @@ def rellenar_cinta2():
     cinta = turing_machine(cinta1)
     print(cinta)
     print(validar_arreglo(cinta))
-    datos_for, datos_otro = extraer_datos(cinta)
+    datos_for = extraer_datos(cinta)
     print(datos_for)
-    print(datos_otro)
+    print()
+    while_loop = "" + datos_for[0][0] + ";\n" "while (" + datos_for[0][1] + ") {""\n" + datos_for[0][3] + "" "\n" +datos_for[0][2]+ "\n}"
+    print(while_loop)
     
 
    
 def main():
+    
     rellenar_cinta2()
    
 main()
