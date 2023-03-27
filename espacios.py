@@ -124,13 +124,13 @@ def rellenar_cinta2():
     datos_for = extraer_datos(cinta)
     print(datos_for)
     print()
-    while_loop = "" + datos_for[0][0] + ";\n" "while (" + datos_for[0][1] + ") {""\n" + datos_for[0][3] + "" "\n" +datos_for[0][2]+ "\n}"
+    while_loop = "" + datos_for[0][0] + "; while (" + datos_for[0][1] + ") { " +datos_for[0][2]+ "}"
    # print(while_loop)
     result_label.config(text=while_loop)
     result_label.pack()
     separador_label.config(text="--------------------------------")
     separador_label.pack()
-    do_while_ = "" + datos_for[0][0] + ";\n" "if (" + datos_for[0][1] + ") {""\n" "do{ ""\n" + datos_for[0][3] + "" "\n" +datos_for[0][2]+ "\n }while(" + datos_for[0][1] + ");}"
+    do_while_ = "" + datos_for[0][0] + "; if (" + datos_for[0][1] + ") { ""do{" +datos_for[0][2]+ " }while(" + datos_for[0][1] + ");}"
    # print(while_loop)
     do_while.config(text=do_while_)
     do_while.pack()
