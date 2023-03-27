@@ -156,21 +156,21 @@ def rellenar_cinta2():
     for caracter in expresion_for1:
         cinta1.append(caracter)
    # cinta1.append("B")
-    print(cinta1)
+   # print(cinta1)
     print()
     cinta = turing_machine(cinta1)
-    print(cinta)
+    #print(cinta)
     print(validar_arreglo(cinta))
     datos_for = extraer_datos(cinta)
-    print(datos_for)
+    #print(datos_for)
     print()
-    while_loop = "" + datos_for[0][0] + "; while (" + datos_for[0][1] + ") { " +datos_for[0][2]+ "}"
+    while_loop = "" + datos_for[0][0] + "; while (" + datos_for[0][1] + ") { " +datos_for[0][3]+ " " +datos_for[0][2]+ "}"
    # print(while_loop)
     result_label.config(text=while_loop)
     result_label.pack()
     separador_label.config(text="--------------------------------")
     separador_label.pack()
-    do_while_ = "" + datos_for[0][0] + "; if (" + datos_for[0][1] + ") { ""do{" +datos_for[0][2]+ " }while(" + datos_for[0][1] + ");}"
+    do_while_ = "" + datos_for[0][0] + "; if (" + datos_for[0][1] + ") { ""do{" +datos_for[0][3]+ "" +datos_for[0][2]+ " }while(" + datos_for[0][1] + ");}"
    # print(while_loop)
     do_while.config(text=do_while_)
     do_while.pack()
@@ -235,7 +235,7 @@ def show_interface(root):
 
     # Ejemplos de conversiones incorrectas
     incorrect_conversions = [
-        ("for (i = 0; i < 10; i++) {\n    cout << i << endl;\n}", "no"),
+        ("fors (i = 0; i < 10; i++) {\n    cout << i << endl;\n}", "no"),
         ("while i < 10 {\n    cout << i << endl;\n    i++;\n}", "no"),
         ("int i = 0;\ndo {\n    cout << 'Hola' << endl;\n    i++;\n} while (i < 10);", "no"),
         ("int i = 0;\nwhile () {\n    cout << 'Hola' << endl;\n    i++;\n}", "no")
@@ -301,3 +301,4 @@ def back_to_interface(root):
 
 # Mostrar la ventana de archivo1
 root1.mainloop()
+ 
